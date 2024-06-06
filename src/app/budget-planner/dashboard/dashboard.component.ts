@@ -46,14 +46,22 @@ export class DashboardComponent {
     }
   ];
 
+  currentMonthExpenses = { month: 'April', expenses: '$4000'};
+
   // To Do Transactions 
   toDoTransactions = [
       { title: 'Pay Rent', completed: true},
       { title: 'Pay Electricity Bill', completed: false},
       { title: 'Pay Internet Bill', completed: false},
+      { title: 'Pay Water Bill', completed: false},
+      { title: 'Pay Phone Bill', completed: true},
   ];
 
-  currentMonthExpenses = { month: 'April', expenses: '$4000'};
+  // Total
+
+  getCurrentMonthTotal(): number {
+    return parseInt(this.currentMonthIncome.income.slice(1)) - parseInt(this.currentMonthExpenses.expenses.slice(1));
+  }
 
   constructor(private router: Router) {}
 

@@ -9,7 +9,7 @@
             </header>
             <div class="income-details">
                 <div class="month">
-                    <h3>Last Months Income</h3>
+                    <h3>Past months</h3>
                     <ul>
                         <li *ngFor="let monthIncome of lastMonthsIncome">
                             {{ monthIncome.month }}: {{ monthIncome.income }}
@@ -31,7 +31,7 @@
             </header>
             <div class="income-details">
                 <div class="month">
-                    <h3>Last Months Expenses</h3>
+                    <h3>Past months</h3>
                     <ul>
                         <li *ngFor="let monthExpenses of lastMonthsExpenses">
                             {{ monthExpenses.month }}: {{ monthExpenses.expenses }}
@@ -55,7 +55,9 @@
                 <div class="month">
                     <h3> April </h3>
                     <ul>
-                        <li *ngFor="let toDo of toDoTransactions">
+                        <li *ngFor="let toDo of toDoTransactions"
+                            [class.completed]="toDo.completed"
+                        >
                             <input class="toggle" type="checkbox" [checked]="toDo.completed">
                             {{ toDo.title }}
                         </li>
@@ -71,9 +73,21 @@
                 <h2>Total</h2>
             </header>
             <div class="total-details">
-                <div class="total-item"></div>
-                <div class="total-item"></div>
-                <div class="total-item"></div>
+                <div class="total-item">
+                    <span class="icon income-icon"><mat-icon>attach_money</mat-icon></span>
+                    <h3>Current month income</h3>
+                    <p> {{ currentMonthIncome.income }} </p>
+                </div>
+                <div class="total-item">
+                    <span class="icon income-icon"><mat-icon>money_off</mat-icon></span>
+                    <h3>Current month expenses</h3>
+                    <p> {{ currentMonthExpenses.expenses }} </p>
+                </div>
+                <div class="total-item">
+                    <span class="icon income-icon"><mat-icon>account_balance_wallet</mat-icon></span>
+                    <h3>Total savings</h3>
+                    <p> ${{ getCurrentMonthTotal()}} </p>
+                </div>
             </div>
         </div>
     </div>

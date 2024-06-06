@@ -83,3 +83,17 @@ button:active {
 .income-details p {
     margin-left: 40px;
 }
+
+li.completed {
+    color: #949494;
+    text-decoration: line-through;
+}
+
+.total-item {
+    display: flex;
+    align-items: center;
+}
+
+.total-item h3 {
+    margin-right: 10px;
+}
