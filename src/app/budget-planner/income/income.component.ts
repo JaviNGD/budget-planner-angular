@@ -98,13 +98,32 @@ export class IncomeComponent {
 
   onChange(event: any) {
     this.selectedMonth = event.target.value;
+    this.monthSelected = true;
     this.getFilteredIncomes();
-    console.log(this.selectedMonth);
-    console.log(this.getFilteredIncomes());
   }
 
   onSubmit() {
-    console.log(this.incomeForm.value);
+    if (this.incomeForm.valid){
+      const newIncome = this.incomeForm.value;
+      switch(this.selectedMonth) {
+        case 'January':
+          this.januaryIncomes.push(newIncome);
+          break;
+        case 'February':
+          this.FebruaryIncomes.push(newIncome);
+          break;
+        case 'March':
+          this.MarchIncomes.push(newIncome);
+          break;
+        case 'April':
+          this.AprilIncomes.push(newIncome);
+          break;
+        default:
+          break;
+    }
+    this.incomeForm.reset();
+    this.incomeForm.patchValue({ month: this.monthSelected, source : '', amount: '', investments: ''});
+    }
   }
 
   onBack() {
