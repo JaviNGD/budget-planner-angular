@@ -77,6 +77,10 @@ export class DashboardComponent {
 
   onToDo() {
     console.log('View To Do');
-    this.router.navigate(['/budget-planner/to-do']);
+    this.router.navigate(['/budget-planner/todo']);
+  }
+
+  toggleSelection(todo: any) {
+    todo.completed = !todo.completed;
   }
 }

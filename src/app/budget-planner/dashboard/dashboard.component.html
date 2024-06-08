@@ -56,9 +56,8 @@
                     <h3> April </h3>
                     <ul>
                         <li *ngFor="let toDo of toDoTransactions"
-                            [class.completed]="toDo.completed"
+                            [class.completed]="toDo.completed" (click)="toggleSelection(toDo)"
                         >
-                            <input class="toggle" type="checkbox" [checked]="toDo.completed">
                             {{ toDo.title }}
                         </li>
                     </ul>

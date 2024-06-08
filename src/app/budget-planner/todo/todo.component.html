@@ -1,0 +1,60 @@
+<app-sidebar></app-sidebar>
+<main>
+    <div class="container">
+        <header class="card-header">
+            <span class="icon income-icon"><mat-icon>assignment</mat-icon></span>
+            <h2>To do Transactions</h2>
+        </header>
+        <form [formGroup]="todoForm" (ngSubmit)="onSubmitTodo()" class="input-form">
+            <div class="form-group">
+                <select formControlName="month" id="month" class="form-control" (change)="onChangeTodo($event)">
+                    <option value="">Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                </select>
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="total-todoTrans">
+                Total ToDo's for {{ selectedMonth }}: {{ calculateTotalTodoTrans(selectedMonth) | currency }}
+            </div>
+            <div class="form-group">
+                <label for="todo-expenses">Transaction Type:</label>
+                <input type="text" formControlName="item" id="todo-expenses" class="form-control"
+                        placeholder="Enter Transaction Type" [class.disabled-dropdown]="!monthSelected">
+            </div>
+            <div class="form-group">
+                <label for="todo-amount">Amount:</label>
+                <input type="number" formControlName="amount" id="todo-amount" class="form-control"
+                        placeholder="Enter Amount" [class.disabled-dropdown]="!monthSelected">
+            </div>
+            <button type="submit" (click)="onSubmitTodo()" class="button">
+                Add Transaction
+            </button>
+        </form>
+        <h3>Todo's of {{ selectedMonth }}</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Transaction Type</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let todo of getFilteredToDos()" [class.completed]="todo.completed" (click)="toggleSelection(todo)">
+                    <td >{{ todo.item }}</td>
+                    <td>{{ todo.amount | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="input-form">
+            <button (click)="onBack()">Back</button>
+            <div class="form-group">                
+            </div>
+            <button (click)="saveForm()">Save</button>
+        </div>
+    </div>
+</main>
+

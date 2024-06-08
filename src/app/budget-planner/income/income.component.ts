@@ -122,7 +122,7 @@ export class IncomeComponent {
           break;
     }
     this.incomeForm.reset();
-    this.incomeForm.patchValue({ month: this.monthSelected, source : '', amount: '', investments: ''});
+    this.incomeForm.patchValue({ month: this.selectedMonth, source : '', amount: '', investments: ''});
     }
   }
 
