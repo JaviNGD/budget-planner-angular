@@ -72,7 +72,7 @@ export class DashboardComponent {
 
   onExpense() {
     console.log('View Expense');
-    this.router.navigate(['/budget-planner/expense']);
+    this.router.navigate(['/budget-planner/expenses']);
   }
 
   onToDo() {

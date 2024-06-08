@@ -1,0 +1,75 @@
+<app-sidebar></app-sidebar>
+<main>
+    <div class="container">
+        <header class="card-header">
+            <span class="icon income-icon"><mat-icon>money_off</mat-icon></span>
+            <h2>Expenses</h2>
+        </header>
+        <form [formGroup]="expensesForm" (ngSubmit)="onSubmitExpense()" class="input-form">
+            <div class="form-group">
+                <select formControlName="month" id="month" class="form-control" (change)="onChangeExpense($event)">
+                    <option value="">Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                </select>
+            </div>
+            <div class="form-group">
+            </div>
+            <div class="total-expenses">
+                Total expenses for {{ selectedMonth }}: {{ calculateTotalExpenses(selectedMonth) | currency }}
+            </div>
+            <div class="form-group">
+                <label for="expense-type">Expense type:</label>
+                <select formControlName="expenseType" id="expenseType" class="form-control"
+                        [class.disabled-dropdown]="!monthSelected"
+                >
+                    <option value="" disabled>Select Expense Type</option>
+                    <option value="Groceries">Groceries</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Health">Health</option>
+                    <option value="Insurance">Insurance</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="expenseAmount">Expense amount:</label>
+                <input type="number" formControlName="expenseAmount" id="expenseAmount" class="form-control"
+                        placeholder="Enter expense amount" [class.disabled-dropdown]="!monthSelected">
+            </div>
+            <button type="submit" (click)="onSubmitExpense()" class="button">
+                Add expense
+            </button>
+        </form>
+        
+        <h3>Expenses of {{ selectedMonth }}</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Expense Type</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let expense of getFilteredExpenses()">
+                    <td>{{ expense.expenseType }}</td>
+                    <td>{{ expense.expenseAmount | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="input-form">
+            <button (click)="onBack()">
+                Back
+            </button>
+            <div class="form-group">
+            </div>
+            <button (click)="saveForm()">
+                Save 
+            </button>
+        </div>
+    </div>
+</main>
