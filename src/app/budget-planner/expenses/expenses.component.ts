@@ -68,7 +68,7 @@ export class ExpensesComponent {
     this.expensesForm = this.fb.group({
       month: ['', Validators.required],
       expenseType: ['', Validators.required],
-      expenseAmount: ['', Validators.required]
+      expenseAmount: ['', [Validators.required, Validators.min(1)]]
     });
   }
 

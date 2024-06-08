@@ -24,11 +24,17 @@
                 <label for="todo-expenses">Transaction Type:</label>
                 <input type="text" formControlName="item" id="todo-expenses" class="form-control"
                         placeholder="Enter Transaction Type" [class.disabled-dropdown]="!monthSelected">
+                <div *ngIf="todoForm.get('item').invalid && (todoForm.get('item').dirty || todoForm.get('item').touched)" class="error">
+                    Transaction Type must be at least 3 characters
+                </div>
             </div>
             <div class="form-group">
                 <label for="todo-amount">Amount:</label>
                 <input type="number" formControlName="amount" id="todo-amount" class="form-control"
-                        placeholder="Enter Amount" [class.disabled-dropdown]="!monthSelected">
+                        placeholder="Enter Amount" [class.disabled-dropdown]="!monthSelected" min="1">
+                <div *ngIf="todoForm.get('amount').invalid && (todoForm.get('amount').dirty || todoForm.get('amount').touched)" class="error">
+                    Amount must be at least 1
+                </div>
             </div>
             <button type="submit" (click)="onSubmitTodo()" class="button">
                 Add Transaction

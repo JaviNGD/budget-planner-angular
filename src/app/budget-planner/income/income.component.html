@@ -50,8 +50,11 @@
                 <label for="amount">Amount</label>
                 <input
                     type="number"  formControlName="amount" id="amount" class="form-control"
-                    placeholder="Enter amount" [class.disabled-dropdown]="!monthSelected"
+                    placeholder="Enter amount" [class.disabled-dropdown]="!monthSelected" min="1"
                 >
+                <div *ngIf="incomeForm.get('amount').invalid && (incomeForm.get('amount').dirty || incomeForm.get('amount').touched)" class="error">
+                    Amount must be at least 1
+                </div>
             </div>
             <div class="form-group">   
             </div>

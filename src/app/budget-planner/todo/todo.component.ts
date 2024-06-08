@@ -57,8 +57,8 @@ export class TodoComponent {
   ngOnInit(): void {
     this.todoForm = this.fb.group({
       month: ['', Validators.required],
-      item: ['', Validators.required],
-      amount: ['', Validators.required],
+      item: ['', [Validators.required, Validators.minLength(3)]],
+      amount: ['', [Validators.required, Validators.min(1)]],
       completed: [false]
     })
   }

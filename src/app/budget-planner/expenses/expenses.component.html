@@ -39,7 +39,10 @@
             <div class="form-group">
                 <label for="expenseAmount">Expense amount:</label>
                 <input type="number" formControlName="expenseAmount" id="expenseAmount" class="form-control"
-                        placeholder="Enter expense amount" [class.disabled-dropdown]="!monthSelected">
+                        placeholder="Enter expense amount" [class.disabled-dropdown]="!monthSelected" min="1"> 
+                <div *ngIf="expensesForm.get('expenseAmount').invalid && (expensesForm.get('expenseAmount').dirty || expensesForm.get('expenseAmount').touched)" class="error">
+                    Amount must be at least 1
+                </div>
             </div>
             <button type="submit" (click)="onSubmitExpense()" class="button">
                 Add expense

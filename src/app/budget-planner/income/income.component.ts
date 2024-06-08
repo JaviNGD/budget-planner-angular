@@ -47,7 +47,7 @@ export class IncomeComponent {
     this.incomeForm = this.fb.group({
       month: ['', Validators.required],
       source: ['', Validators.required],
-      amount: ['', Validators.required],
+      amount: ['', [Validators.required, Validators.min(1)]],
       investments: ['', Validators.required],
     });
   }
