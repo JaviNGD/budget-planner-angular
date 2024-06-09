@@ -7,7 +7,7 @@
 
 .login-container {
     max-width: 400px;
-    margin: 100px auto 50px auto;
+    margin: 60px auto 50px auto;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -57,4 +57,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
 }

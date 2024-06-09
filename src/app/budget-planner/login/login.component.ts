@@ -39,8 +39,17 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-      this.router.navigate(['/budget-planner/dashboard']);
+      const user = this.loginForm.value;
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+
+      const existingUser = registeredUsers.find((u: any) => u.email === user.email && u.password === user.password);
+
+      if (existingUser) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.router.navigate(['/budget-planner/dashboard']);
+      } else {
+        this.snackBar.open('User not registered or incorrect password', 'Close', { duration: 2000 });
+      }
     } else {
       this.snackBar.open('Invalid email or password', 'Close', { duration: 2000 });
     }
@@ -48,10 +57,21 @@ export class LoginComponent implements OnInit {
 
   register() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-      this.router.navigate(['/budget-planner/dashboard']);
+      const user = this.registerForm.value;
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+
+      const existingUser = registeredUsers.find((u: any) => u.email === user.email);
+
+      if (existingUser) {
+        this.snackBar.open('User already registered', 'Close', { duration: 2000 });
+      } else {
+        registeredUsers.push(user);
+        localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.router.navigate(['/budget-planner/dashboard']);
+      }
     } else {
-      this.snackBar.open('An error has occurred, please try again', 'Close', { duration: 2000 });
+      this.snackBar.open('Invalid data', 'Close', { duration: 2000 });
     }
   }
 }
