@@ -6,6 +6,7 @@ import { IncomeComponent } from './income/income.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TodoComponent } from './todo/todo.component';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
   {path: 'login', component:LoginComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'income', component:IncomeComponent},
   {path: 'expenses', component:ExpensesComponent},
   {path: 'todo', component:TodoComponent},
+  {path: 'history', component:HistoryComponent},
   {path: '**', component:PageNotFoundComponent}
 ];
 
