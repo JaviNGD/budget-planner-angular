@@ -45,7 +45,13 @@ export class LoginComponent implements OnInit {
       const existingUser = registeredUsers.find((u: any) => u.email === user.email && u.password === user.password);
 
       if (existingUser) {
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        const currentUser = {
+          email: existingUser.email,
+          name: existingUser.name,
+          lastName: existingUser.lastName,
+          password: existingUser.password
+        };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
         this.router.navigate(['/budget-planner/dashboard']);
       } else {
         this.snackBar.open('User not registered or incorrect password', 'Close', { duration: 2000 });

@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class ExpensesComponent {
   constructor(private fb: FormBuilder, private router: Router) {
-    this.selectedMonth = new Date().toLocaleString('default', { month: 'long' });
+    this.selectedMonth = '- ';
   }
 
   expensesForm: any;

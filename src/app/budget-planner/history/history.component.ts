@@ -57,7 +57,7 @@ export class HistoryComponent {
   ];
 
   constructor(private fb: FormBuilder, private router: Router) {
-    this.selectedMonth = '';
+    this.selectedMonth = '- ';
   }
 
   ngOnInit(): void {

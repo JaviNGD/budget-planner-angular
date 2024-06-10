@@ -15,9 +15,7 @@ import { throws } from 'assert';
 })
 export class TodoComponent {
   constructor(private fb: FormBuilder, private router: Router) {
-    const currentDate = new Date();
-    const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
-    this.selectedMonth = currentMonth;
+    this.selectedMonth = '- ';
   }
 
   todoForm: any;

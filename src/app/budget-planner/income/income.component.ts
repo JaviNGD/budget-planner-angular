@@ -14,8 +14,7 @@ import { Router } from '@angular/router';
 })
 export class IncomeComponent {
   constructor(private fb:FormBuilder, private router: Router) {
-    const currentDate = new Date();
-    this.selectedMonth = currentDate.toLocaleString('default', {month: 'long'});
+    this.selectedMonth = '- ';
   }
 
   incomeForm: any;
